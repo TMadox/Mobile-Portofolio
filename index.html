@@ -127,6 +127,186 @@
         font-weight: 500;
       }
 
+      /* Personal Bio Section */
+      .personal-bio {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        border-radius: 24px;
+        padding: 3rem;
+        margin: 4rem 0;
+        backdrop-filter: blur(15px);
+        animation: fadeInUp 1s ease-out 0.3s both;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .personal-bio::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 20s linear infinite;
+      }
+
+      .bio-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .bio-header h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #10b981, #8b5cf6, #06b6d4);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .bio-header p {
+        font-size: 1.1rem;
+        color: #9ca3af;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .bio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .bio-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .bio-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(16, 185, 129, 0.3);
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+      }
+
+      .bio-card-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #10b981, #06b6d4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .bio-card h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 1rem;
+      }
+
+      .bio-info-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        color: #d1d5db;
+      }
+
+      .bio-info-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .bio-info-icon {
+        width: 20px;
+        height: 20px;
+        color: #10b981;
+        flex-shrink: 0;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        text-decoration: none;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+
+      .social-link:hover {
+        background: rgba(16, 185, 129, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+      }
+
+      .achievements-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .achievement-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: rgba(139, 92, 246, 0.05);
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .achievement-item:hover {
+        background: rgba(139, 92, 246, 0.1);
+        border-color: rgba(139, 92, 246, 0.2);
+      }
+
+      .achievement-icon {
+        width: 24px;
+        height: 24px;
+        color: #8b5cf6;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .achievement-text {
+        color: #d1d5db;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
       .hero {
         text-align: center;
         padding: 2rem 0 3rem;
@@ -442,6 +622,15 @@
         }
       }
 
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
       @media (max-width: 768px) {
         .apps-grid {
           grid-template-columns: 1fr;
@@ -470,6 +659,22 @@
 
         .bio-title {
           font-size: 1.5rem;
+        }
+
+        .personal-bio {
+          padding: 2rem;
+        }
+
+        .bio-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .bio-header h2 {
+          font-size: 2rem;
+        }
+
+        .social-links {
+          flex-direction: column;
         }
       }
     </style>
@@ -521,6 +726,152 @@
         </div>
       </div>
 
+      <!-- Personal Bio Section -->
+      <div class="personal-bio">
+        <div class="bio-header">
+          <h2>About Me</h2>
+          <p>
+            Get to know the person behind the code and the passion that drives
+            innovation
+          </p>
+        </div>
+
+        <div class="bio-grid">
+          <!-- Contact Information -->
+          <div class="bio-card">
+            <div class="bio-card-icon">📧</div>
+            <h3>Contact Information</h3>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                />
+                <path
+                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                />
+              </svg>
+              <span>mamdohahmed33.ma@gmail.com</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zM6 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>+201061715164</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>Giza, Egypt</span>
+            </div>
+          </div>
+
+          <!-- Education & Experience -->
+          <div class="bio-card">
+            <div class="bio-card-icon">🎓</div>
+            <h3>Education & Background</h3>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+                />
+              </svg>
+              <span>B.S. Computer Science</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                />
+                <path
+                  d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15a24.98 24.98 0 01-8-1.308z"
+                />
+              </svg>
+              <span>5+ Years Experience</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>10+ Published Applications</span>
+            </div>
+          </div>
+
+          <!-- Interests & Hobbies -->
+          <div class="bio-card">
+            <div class="bio-card-icon">🎨</div>
+            <h3>Interests & Hobbies</h3>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>UI/UX Design</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Open Source Contributing</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Game Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="apps-grid">
         <div class="app-card" onclick="openModal('app1')">
           <div class="app-icon">
@@ -657,6 +1008,23 @@
             single day.
           </p>
         </div>
+        <div class="app-card" onclick="openModal('app9')">
+            <div class="app-icon">
+              <img
+                src="https://play-lh.googleusercontent.com/1dhK058GKaAh8BZLPrPNEwqupnlmrOHL7GxAN7R6ga7Z-Ike4olhCtGWGOWgmiBZPxs=w240-h480-rw"
+                alt="App Icon"
+                style="width: 100%; height: 100%; border-radius: 20px"
+              />
+            </div>
+            <h3 class="app-title">Misr Radiology Center (MRC)</h3>
+            <p class="app-description">
+              MRC is a comprehensive radiology app offering appointment booking, instant
+              access to medical results, loyalty rewards, and full family profile
+              management—all in a secure and easy-to-use interface designed for patient
+              convenience.
+            </p>
+          </div>
+          
       </div>
     </div>
 
@@ -876,6 +1244,27 @@
             },
           ],
         },
+        app9: {
+  icon: "https://play-lh.googleusercontent.com/1dhK058GKaAh8BZLPrPNEwqupnlmrOHL7GxAN7R6ga7Z-Ike4olhCtGWGOWgmiBZPxs=w240-h480-rw",
+  iconType: "image",
+  title: "Misr Radiology Center (MRC)",
+  description:
+    "MRC is a comprehensive radiology app offering appointment booking, instant access to medical results, loyalty rewards, and full family profile management—all in a secure and easy-to-use interface designed for patient convenience.",
+  tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Messaging"],
+  stores: [
+    {
+      name: "App Store",
+      url: "#", // Replace with actual App Store URL if available
+      icon: "🍎",
+    },
+    {
+      name: "Google Play",
+      url: "#", // Replace with actual Google Play URL if available
+      icon: "🤖",
+    },
+  ],
+}
+,
       };
 
       function openModal(appId) {
@@ -944,5 +1333,7 @@
         }
       });
     </script>
+    </div>
+    
   </body>
 </html>
