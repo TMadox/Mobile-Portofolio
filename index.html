@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f0f23 0%,
+          #1a1a2e 50%,
+          #16213e 100%
+        );
+        color: #ffffff;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .banner {
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.2),
+          rgba(6, 182, 212, 0.2)
+        );
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 2rem 0 4rem;
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 1s ease-out 0.1s both;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.05),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      .banner-content {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        flex-shrink: 0;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        animation: pulse 2s infinite;
+      }
+
+      .bio-content {
+        flex: 1;
+      }
+
+      .bio-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+      }
+
+      .bio-subtitle {
+        font-size: 1rem;
+        color: #8b5cf6;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .bio-text {
+        font-size: 1rem;
+        color: #d1d5db;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .skills-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        background: rgba(139, 92, 246, 0.15);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        color: #c4b5fd;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 2rem 0 3rem;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(139, 92, 246, 0.1) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4, #10b981);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: #a1a1aa;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 2rem 0;
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+
+      .app-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .app-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(139, 92, 246, 0.1),
+          rgba(6, 182, 212, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .app-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(139, 92, 246, 0.5);
+        box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+      }
+
+      .app-card:hover::before {
+        opacity: 1;
+      }
+
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .app-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .app-description {
+        color: #a1a1aa;
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+      }
+
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        background: linear-gradient(
+          135deg,
+          rgba(15, 15, 35, 0.95),
+          rgba(26, 26, 46, 0.95)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        padding: 3rem;
+        max-width: 800px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: scale(0.8) translateY(50px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(20px);
+        position: relative;
+      }
+
+      .modal.active .modal-content {
+        transform: scale(1) translateY(0);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+      }
+
+      .modal-app-icon {
+        width: 120px;
+        height: 120px;
+        border-radius: 30px;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+
+      .modal-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .modal-description {
+        font-size: 1.125rem;
+        color: #d1d5db;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .tech-stack {
+        margin-bottom: 2rem;
+      }
+
+      .tech-stack h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: #f3f4f6;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tech-tag {
+        background: rgba(139, 92, 246, 0.2);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        color: #c4b5fd;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .store-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .store-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .store-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+      }
+
+      .store-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .store-link:hover::before {
+        left: 100%;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .apps-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-content {
+          padding: 2rem;
+          margin: 1rem;
+        }
+
+        .store-links {
+          flex-direction: column;
+        }
+
+        .banner-content {
+          flex-direction: column;
+          text-align: center;
+          gap: 1.5rem;
+        }
+
+        .avatar {
+          width: 100px;
+          height: 100px;
+          font-size: 2.5rem;
+        }
+
+        .bio-title {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <h1>Portfolio Showcase</h1>
+        <p>
+          Crafting digital experiences that make a difference. Explore my
+          collection of innovative applications.
+        </p>
+      </div>
+
+      <div class="banner">
+        <div class="banner-content">
+          <img
+            class="avatar"
+            src="assets/suit.jpg"
+            alt="Avatar"
+            style="object-fit: cover; object-position: 0% 25%"
+          />
+          <div class="bio-content">
+            <div class="bio-subtitle">Senior Flutter Developer</div>
+            <h2 class="bio-title">Building Cross-Platform Excellence</h2>
+            <p class="bio-text">
+              With over 5 years of experience in Flutter development, I
+              specialize in creating high-quality cross-platform mobile
+              applications that deliver exceptional user experiences. My
+              expertise spans advanced state management, seamless API
+              integrations, and scalable architecture design. I'm passionate
+              about leading development teams and mentoring developers to build
+              innovative, user-focused solutions.
+            </p>
+            <div class="skills-tags">
+              <span class="skill-tag">Flutter</span>
+              <span class="skill-tag">Dart</span>
+              <span class="skill-tag">BLoC/Cubit</span>
+              <span class="skill-tag">Provider</span>
+              <span class="skill-tag">GetX</span>
+              <span class="skill-tag">Riverpod</span>
+              <span class="skill-tag">API Integration</span>
+              <span class="skill-tag">Payment Gateways</span>
+              <span class="skill-tag">Real-time Features</span>
+              <span class="skill-tag">Team Leadership</span>
+              <span class="skill-tag">Kotlin</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="apps-grid">
+        <div class="app-card" onclick="openModal('app1')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Diet Watchers</h3>
+          <p class="app-description">
+            A personalized nutrition and meal delivery app offering healthy,
+            delicious meals tailored to your dietary goals. Designed for
+            holistic wellness, Diet Watchers supports weight loss, balanced
+            living, and a healthier lifestyle—all with ease and flavor.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app2')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/9a/0e/df9a0e34-70e0-1862-f35a-61ef18bee89b/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Soldout</h3>
+          <p class="app-description">
+            A community-driven marketplace app showcasing handcrafted products
+            from local families. Soldout offers a seamless shopping experience
+            filled with unique, high-quality items made with care and
+            creativity.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app3')">
+          <div class="app-icon">🏃</div>
+          <h3 class="app-title">FitTracker Elite</h3>
+          <p class="app-description">
+            Comprehensive fitness tracking app with personalized workout plans,
+            nutrition tracking, and social challenges to keep you motivated.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app4')">
+          <div class="app-icon">💰</div>
+          <h3 class="app-title">CryptoWallet</h3>
+          <p class="app-description">
+            Secure cryptocurrency wallet with multi-chain support, DeFi
+            integration, and advanced security features for digital asset
+            management.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app5')">
+          <div class="app-icon">📚</div>
+          <h3 class="app-title">LearnHub</h3>
+          <p class="app-description">
+            Interactive learning platform with AI tutoring, progress tracking,
+            and gamified courses across multiple subjects and skill levels.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app6')">
+          <div class="app-icon">🍳</div>
+          <h3 class="app-title">ChefMaster</h3>
+          <p class="app-description">
+            Smart cooking companion with recipe recommendations, meal planning,
+            grocery lists, and step-by-step cooking guidance.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div id="modal-body">
+          <!-- Modal content will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const appData = {
+        app1: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg",
+          iconType: "image",
+          title: "Diet Watchers",
+          description:
+            "Diet Watchers is a cross-platform wellness and meal delivery app built with clean architecture and modular design. It leverages Flutter for high-performance UI, integrates Firebase for real-time data handling and authentication, and uses PHP Laravel for scalable backend services. The app supports secure payments, GPS-based delivery tracking, and personalized nutrition workflows tailored for Saudi Arabia.",
+          tech: [
+            "Flutter",
+            "Firebase Notifications",
+            "PHP Laravel",
+            "Moyasar",
+            "Google Maps API",
+            "Agora RTC",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/diet-watchers-eat-healthy/id6460976436",
+              icon: "🍎",
+            },
+            {
+              name: "Google Play",
+              url: "#",
+              icon: "🤖",
+            },
+          ],
+        },
+        app2: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/9a/0e/df9a0e34-70e0-1862-f35a-61ef18bee89b/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Soldout",
+          description:
+            "Soldout is a community-focused e-commerce app that empowers local artisans and productive families to showcase and sell their handcrafted goods. Built with Flutter for a fluid cross-platform experience, it leverages Firebase Functions, Firestore and Node.js for real-time data, secure authentication, and scalable backend operations. The app features intuitive browsing, secure checkout, and seller tools to manage orders and inventory effortlessly.",
+          tech: [
+            "Flutter",
+            "Firebase",
+            "PHP Laravel",
+            "Cloud Firestore",
+            "URWAY",
+            "MVC",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "#", // Replace with actual App Store link if available
+              icon: "🍎",
+            },
+            {
+              name: "Google Play",
+              url: "#", // Replace with actual Google Play link if available
+              icon: "🤖",
+            },
+          ],
+        },
+        app3: {
+          icon: "🏃",
+          iconType: "emoji",
+          title: "FitTracker Elite",
+          description:
+            "Transform your fitness journey with FitTracker Elite's comprehensive health and wellness ecosystem. Our app combines advanced biometric tracking, personalized AI coaching, and social motivation to help you achieve your fitness goals. Track workouts, monitor nutrition, join challenges, and connect with a community of fitness enthusiasts all in one powerful platform.",
+          tech: [
+            "Flutter",
+            "Firebase",
+            "TensorFlow Lite",
+            "HealthKit",
+            "Google Fit",
+          ],
+          stores: [
+            { name: "App Store", url: "#", icon: "🍎" },
+            { name: "Google Play", url: "#", icon: "🤖" },
+          ],
+        },
+        app4: {
+          icon: "💰",
+          iconType: "emoji",
+          title: "CryptoWallet",
+          description:
+            "Secure your digital assets with CryptoWallet's bank-grade security and intuitive interface. Supporting over 100 cryptocurrencies and multiple blockchain networks, our wallet provides seamless trading, staking, and DeFi integration. With hardware wallet compatibility, multi-signature support, and advanced encryption, your investments are always protected.",
+          tech: [
+            "React Native",
+            "Blockchain",
+            "Web3.js",
+            "Solidity",
+            "TypeScript",
+          ],
+          stores: [
+            { name: "App Store", url: "#", icon: "🍎" },
+            { name: "Google Play", url: "#", icon: "🤖" },
+          ],
+        },
+        app5: {
+          icon: "📚",
+          iconType: "emoji",
+          title: "LearnHub",
+          description:
+            "Unlock your potential with LearnHub's adaptive learning platform powered by artificial intelligence. Our personalized curriculum adjusts to your learning style and pace, ensuring optimal knowledge retention. From coding bootcamps to language learning, professional certifications to creative skills, LearnHub offers expert-crafted content with interactive exercises and real-world projects.",
+          tech: ["Vue.js", "Django", "PostgreSQL", "TensorFlow", "Docker"],
+          stores: [
+            { name: "Web App", url: "#", icon: "🌐" },
+            { name: "App Store", url: "#", icon: "🍎" },
+          ],
+        },
+        app6: {
+          icon: "🍳",
+          iconType: "emoji",
+          title: "ChefMaster",
+          description:
+            "Elevate your culinary skills with ChefMaster's intelligent cooking assistant. Our app features thousands of recipes with step-by-step video guides, smart meal planning based on dietary preferences, and automated grocery lists. With voice commands, timer integration, and nutritional analysis, ChefMaster makes cooking enjoyable and accessible for chefs of all skill levels.",
+          tech: ["React Native", "Node.js", "OpenAI API", "Firebase", "Stripe"],
+          stores: [
+            { name: "App Store", url: "#", icon: "🍎" },
+            { name: "Google Play", url: "#", icon: "🤖" },
+          ],
+        },
+      };
+
+      function openModal(appId) {
+        const app = appData[appId];
+        const modal = document.getElementById("modal");
+        const modalBody = document.getElementById("modal-body");
+
+        // Generate the icon HTML based on type
+        let iconHTML;
+        if (app.iconType === "image") {
+          iconHTML = `<img src="${app.icon}" alt="${app.title} Icon" style="width: 100%; height: 100%; border-radius: 30px; object-fit: cover;" />`;
+        } else {
+          iconHTML = app.icon;
+        }
+
+        modalBody.innerHTML = `
+                      <div class="modal-app-icon">${iconHTML}</div>
+                      <h2 class="modal-title">${app.title}</h2>
+                      <p class="modal-description">${app.description}</p>
+                      <div class="tech-stack">
+                          <h3>Tech Stack</h3>
+                          <div class="tech-tags">
+                              ${app.tech
+                                .map(
+                                  (tech) =>
+                                    `<span class="tech-tag">${tech}</span>`
+                                )
+                                .join("")}
+                          </div>
+                      </div>
+                      <div class="store-links">
+                          ${app.stores
+                            .map(
+                              (store) => `
+                              <a href="${store.url}" class="store-link" target="_blank">
+                                  <span>${store.icon}</span>
+                                  Download on ${store.name}
+                              </a>
+                          `
+                            )
+                            .join("")}
+                      </div>
+                  `;
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Close modal when clicking outside
+      document.getElementById("modal").addEventListener("click", function (e) {
+        if (e.target === this) {
+          closeModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
