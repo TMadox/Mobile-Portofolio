@@ -1,1382 +1,925 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mohamed Amer Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
 
-        body {
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg,
-                    #0f0f23 0%,
-                    #1a1a2e 50%,
-                    #16213e 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .banner {
-            background: linear-gradient(135deg,
-                    rgba(139, 92, 246, 0.2),
-                    rgba(6, 182, 212, 0.2));
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0 4rem;
-            backdrop-filter: blur(10px);
-            animation: fadeInUp 1s ease-out 0.1s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .banner::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.05),
-                    transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        .banner-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            flex-shrink: 0;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-            animation: pulse 2s infinite;
-        }
-
-        .bio-content {
-            flex: 1;
-        }
-
-        .bio-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .bio-subtitle {
-            font-size: 1rem;
-            color: #8b5cf6;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .bio-text {
-            font-size: 1rem;
-            color: #d1d5db;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            color: #c4b5fd;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* Personal Bio Section */
-        .personal-bio {
-            background: linear-gradient(135deg,
-                    rgba(16, 185, 129, 0.1),
-                    rgba(139, 92, 246, 0.1));
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 24px;
-            padding: 3rem;
-            margin: 4rem 0;
-            backdrop-filter: blur(15px);
-            animation: fadeInUp 1s ease-out 0.3s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .personal-bio::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle,
-                    rgba(16, 185, 129, 0.1) 0%,
-                    transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        .bio-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .bio-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #10b981, #8b5cf6, #06b6d4);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .bio-header p {
-            font-size: 1.1rem;
-            color: #9ca3af;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .bio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .bio-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .bio-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
-        }
-
-        .bio-card-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #10b981, #06b6d4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .bio-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .bio-info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            color: #d1d5db;
-        }
-
-        .bio-info-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .bio-info-icon {
-            width: 20px;
-            height: 20px;
-            color: #10b981;
-            flex-shrink: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            text-decoration: none;
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .social-link:hover {
-            background: rgba(16, 185, 129, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .achievements-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .achievement-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 1rem;
-            background: rgba(139, 92, 246, 0.05);
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .achievement-item:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: rgba(139, 92, 246, 0.2);
-        }
-
-        .achievement-icon {
-            width: 24px;
-            height: 24px;
-            color: #8b5cf6;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .achievement-text {
-            color: #d1d5db;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 2rem 0 3rem;
-            position: relative;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center,
-                    rgba(139, 92, 246, 0.1) 0%,
-                    transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4, #10b981);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #a1a1aa;
-            max-width: 600px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .app-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .app-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg,
-                    rgba(139, 92, 246, 0.1),
-                    rgba(6, 182, 212, 0.1));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .app-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
-        }
-
-        .app-card:hover::before {
-            opacity: 1;
-        }
-
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .app-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .app-description {
-            color: #a1a1aa;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg,
-                    rgba(15, 15, 35, 0.95),
-                    rgba(26, 26, 46, 0.95));
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 3rem;
-            max-width: 800px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.8) translateY(50px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(20px);
-            position: relative;
-        }
-
-        .modal.active .modal-content {
-            transform: scale(1) translateY(0);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .modal-app-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 30px;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .modal-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .modal-description {
-            font-size: 1.125rem;
-            color: #d1d5db;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .tech-stack {
-            margin-bottom: 2rem;
-        }
-
-        .tech-stack h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #f3f4f6;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(139, 92, 246, 0.2);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            color: #c4b5fd;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .store-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .store-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            color: white;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .store-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        }
-
-        .store-link::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    transparent);
-            transition: left 0.5s ease;
-        }
-
-        .store-link:hover::before {
-            left: 100%;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                left: -100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                padding: 2rem;
-                margin: 1rem;
-            }
-
-            .store-links {
-                flex-direction: column;
-            }
-
-            .banner-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-
-            .avatar {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
-            }
-
-            .bio-title {
-                font-size: 1.5rem;
-            }
-
-            .personal-bio {
-                padding: 2rem;
-            }
-
-            .bio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .bio-header h2 {
-                font-size: 2rem;
-            }
-
-            .social-links {
-                flex-direction: column;
-            }
-
-            .app-card.coming-soon {
-                opacity: 0.6;
-                cursor: default;
-                pointer-events: none;
-                position: relative;
-            }
-
-            .app-card.coming-soon::after {
-                content: "Coming Soon";
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                background: #8b5cf6;
-                color: white;
-                padding: 0.3rem 0.75rem;
-                border-radius: 9999px;
-                font-size: 0.75rem;
-                font-weight: 600;
-            }
-
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <div class="hero">
-            <h1>Portfolio Showcase</h1>
-            <p>
-                Crafting digital experiences that make a difference. Explore my
-                collection of innovative applications.
+      <div class="hero">
+        <h1>Portfolio Showcase</h1>
+        <p>
+          Crafting digital experiences that make a difference. Explore my
+          collection of innovative applications.
+        </p>
+      </div>
+
+      <div class="banner">
+        <div class="banner-content">
+          <img
+            class="avatar"
+            src="assets/suit.jpg"
+            alt="Avatar"
+            style="object-fit: cover; object-position: 0% 25%"
+          />
+          <div class="bio-content">
+            <div class="bio-subtitle">Senior Flutter Developer</div>
+            <h2 class="bio-title">Building Cross-Platform Excellence</h2>
+            <p class="bio-text">
+              With over 5 years of experience in Flutter development, I
+              specialize in creating high-quality cross-platform mobile
+              applications that deliver exceptional user experiences. My
+              expertise spans advanced state management, seamless API
+              integrations, and scalable architecture design. I'm passionate
+              about leading development teams and mentoring developers to build
+              innovative, user-focused solutions.
             </p>
+            <div class="skills-tags">
+              <span class="skill-tag">Flutter</span>
+              <span class="skill-tag">Dart</span>
+              <span class="skill-tag">BLoC/Cubit</span>
+              <span class="skill-tag">Provider</span>
+              <span class="skill-tag">GetX</span>
+              <span class="skill-tag">Riverpod</span>
+              <span class="skill-tag">API Integration</span>
+              <span class="skill-tag">Payment Gateways</span>
+              <span class="skill-tag">Real-time Features</span>
+              <span class="skill-tag">Team Leadership</span>
+              <span class="skill-tag">Kotlin</span>
+              <span class="skill-tag">In-App Purchase</span>
+              <span class="skill-tag">Agora RTC</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">WebSockets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Bio Section -->
+      <div class="personal-bio">
+        <div class="bio-header">
+          <h2>About Me</h2>
+          <p>
+            Get to know <b style="color: white">Mohamed Mamdouh Amer</b>, the
+            person behind the code and the passion that drives innovation
+          </p>
+          <div style="text-align: center; margin-top: 2rem">
+            <a href="assets/resume.pdf" download class="store-link">
+              📄 Download Resume
+            </a>
+          </div>
         </div>
 
-        <div class="banner">
-            <div class="banner-content">
-                <img class="avatar" src="assets/suit.jpg" alt="Avatar"
-                    style="object-fit: cover; object-position: 0% 25%" />
-                <div class="bio-content">
-                    <div class="bio-subtitle">Senior Flutter Developer</div>
-                    <h2 class="bio-title">Building Cross-Platform Excellence</h2>
-                    <p class="bio-text">
-                        With over 5 years of experience in Flutter development, I
-                        specialize in creating high-quality cross-platform mobile
-                        applications that deliver exceptional user experiences. My
-                        expertise spans advanced state management, seamless API
-                        integrations, and scalable architecture design. I'm passionate
-                        about leading development teams and mentoring developers to build
-                        innovative, user-focused solutions.
-                    </p>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Flutter</span>
-                        <span class="skill-tag">Dart</span>
-                        <span class="skill-tag">BLoC/Cubit</span>
-                        <span class="skill-tag">Provider</span>
-                        <span class="skill-tag">GetX</span>
-                        <span class="skill-tag">Riverpod</span>
-                        <span class="skill-tag">API Integration</span>
-                        <span class="skill-tag">Payment Gateways</span>
-                        <span class="skill-tag">Real-time Features</span>
-                        <span class="skill-tag">Team Leadership</span>
-                        <span class="skill-tag">Kotlin</span>
-                        <span class="skill-tag">In-App Purchase</span>
-                        <span class="skill-tag">Agora RTC</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">WebSockets</span>
-                    </div>
-                </div>
-
-
+        <div class="bio-grid">
+          <!-- Contact Information -->
+          <div class="bio-card">
+            <div class="bio-card-icon">📧</div>
+            <h3>Contact Information</h3>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                />
+                <path
+                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                />
+              </svg>
+              <span>dev@mohamedmamdouh.com</span>
             </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zM6 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>+201061715164</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>Giza, Egypt</span>
+            </div>
+          </div>
+
+          <!-- Education & Experience -->
+          <div class="bio-card">
+            <div class="bio-card-icon">🎓</div>
+            <h3>Education & Background</h3>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"
+                />
+              </svg>
+              <span>B.S. Computer Science</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                />
+                <path
+                  d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15a24.98 24.98 0 01-8-1.308z"
+                />
+              </svg>
+              <span>5+ Years Experience</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span>10+ Published Applications</span>
+            </div>
+          </div>
+
+          <!-- Interests & Hobbies -->
+          <div class="bio-card">
+            <div class="bio-card-icon">🎨</div>
+            <h3>Interests & Hobbies</h3>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>UI/UX Design</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Open Source Contributing</span>
+            </div>
+            <div class="bio-info-item">
+              <svg
+                class="bio-info-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Game Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero">
+        <h1>Published Apps</h1>
+        <p>
+          Explore a selection of published applications I've contributed to,
+          showcasing my expertise and passion for creating impactful digital
+          experiences.
+        </p>
+      </div>
+      <div class="apps-grid">
+        <div class="app-card" onclick="openModal('app1')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Diet Watchers</h3>
+          <p class="app-description">
+            A personalized nutrition and meal delivery app offering healthy,
+            delicious meals tailored to your dietary goals. Designed for
+            holistic wellness, Diet Watchers supports weight loss, balanced
+            living, and a healthier lifestyle—all with ease and flavor.
+          </p>
         </div>
 
-        <!-- Personal Bio Section -->
-        <div class="personal-bio">
-            <div class="bio-header">
-                <h2>About Me</h2>
-                <p>
-                    Get to know <b style="color: white;">Mohamed Mamdouh Amer</b>, the person behind the code and the
-                    passion that drives
-                    innovation
-                </p>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="assets/resume.pdf" download class="store-link">
-                        📄 Download Resume
-                    </a>
-                </div>
-            </div>
-
-
-            <div class="bio-grid">
-                <!-- Contact Information -->
-                <div class="bio-card">
-                    <div class="bio-card-icon">📧</div>
-                    <h3>Contact Information</h3>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                        </svg>
-                        <span>mamdohahmed33.ma@gmail.com</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zM6 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span>+201061715164</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span>Giza, Egypt</span>
-                    </div>
-                </div>
-
-                <!-- Education & Experience -->
-                <div class="bio-card">
-                    <div class="bio-card-icon">🎓</div>
-                    <h3>Education & Background</h3>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-                        </svg>
-                        <span>B.S. Computer Science</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
-                                clip-rule="evenodd" />
-                            <path
-                                d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15a24.98 24.98 0 01-8-1.308z" />
-                        </svg>
-                        <span>5+ Years Experience</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span>10+ Published Applications</span>
-                    </div>
-                </div>
-
-                <!-- Interests & Hobbies -->
-                <div class="bio-card">
-                    <div class="bio-card-icon">🎨</div>
-                    <h3>Interests & Hobbies</h3>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>UI/UX Design</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>Open Source Contributing</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>Game Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="apps-grid">
-            <div class="app-card" onclick="openModal('app1')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Diet Watchers</h3>
-                <p class="app-description">
-                    A personalized nutrition and meal delivery app offering healthy,
-                    delicious meals tailored to your dietary goals. Designed for
-                    holistic wellness, Diet Watchers supports weight loss, balanced
-                    living, and a healthier lifestyle—all with ease and flavor.
-                </p>
-            </div>
-
-            <div class="app-card" onclick="openModal('app2')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/9a/0e/df9a0e34-70e0-1862-f35a-61ef18bee89b/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Soldout</h3>
-                <p class="app-description">
-                    A community-driven marketplace app showcasing handcrafted products
-                    from local families. Soldout offers a seamless shopping experience
-                    filled with unique, high-quality items made with care and
-                    creativity.
-                </p>
-            </div>
-
-            <div class="app-card" onclick="openModal('app3')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1f/08/6a/1f086a25-2f78-2389-3094-252b74a031cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Crunch</h3>
-                <p class="app-description">
-                    Crunch is a powerful finance management app that helps you track
-                    expenses, manage budgets, and monitor net worth in real time. With
-                    UAE bank integration, smart analytics, and multi-currency support,
-                    Crunch gives you total control over your money.
-                </p>
-            </div>
-
-            <div class="app-card" onclick="openModal('app4')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/3d/de/613dde95-19e3-d4a3-2f17-4d50325f70a7/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/100x100bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Siru Maps</h3>
-                <p class="app-description">
-                    Siru Maps is a cultural exploration app that digitally maps the
-                    events and locations of world civilizations. It helps users discover
-                    historical connections and shared human heritage through an
-                    immersive and educational experience.
-                </p>
-            </div>
-
-            <div class="app-card" onclick="openModal('app5')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/54/30/f0/5430f095-1b5b-ba89-789e-01dc6ada3578/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Hayatona Clinics</h3>
-                <p class="app-description">
-                    Hayatona Clinic is a digital health and wellness platform focused on
-                    promoting a healthy lifestyle through expert-led services in
-                    nutrition, fitness, and chronic disease management. It offers
-                    virtual consultations, daily guidance, educational content, and
-                    interactive health tools to support your wellness journey.
-                </p>
-            </div>
-
-            <div class="app-card" onclick="openModal('app6')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fa/13/05/fa130588-3f4c-775b-e9d4-e46c3c0a7db3/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Smart Sales</h3>
-                <p class="app-description">
-                    Smart Sales is a business-focused app that helps store owners and
-                    sales teams manage operations, track performance, and streamline
-                    daily tasks—empowering better decision-making through visibility and
-                    control.
-                </p>
-            </div>
-
-            <div class="app-card" onclick="openModal('app7')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/57/79/d2/5779d2be-ecac-65c6-b8e7-80673e8e334a/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Tayseer Finance</h3>
-                <p class="app-description">
-                    Tayseer Finance is a digital financing app that lets users apply
-                    for, manage, and track their finance services seamlessly. With
-                    electronic applications, secure payment options, and branch-free
-                    servicing, it brings modern finance to your fingertips.
-                </p>
-            </div>
-            <div class="app-card" onclick="openModal('app8')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/35/b5/6735b57d-74a0-71c7-08be-34e24b00e75a/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Mountain Lakes Bagels</h3>
-                <p class="app-description">
-                    Mountain Lakes Bagels delivers fresh, delicious bagels and breakfast
-                    options right to your door. Designed for speed and convenience, the
-                    app makes ordering your morning favorites easy and enjoyable—every
-                    single day.
-                </p>
-            </div>
-            <div class="app-card" onclick="openModal('app9')">
-                <div class="app-icon">
-                    <img src="https://play-lh.googleusercontent.com/1dhK058GKaAh8BZLPrPNEwqupnlmrOHL7GxAN7R6ga7Z-Ike4olhCtGWGOWgmiBZPxs=w240-h480-rw"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Misr Radiology Center (MRC)</h3>
-                <p class="app-description">
-                    MRC is a comprehensive radiology app offering appointment booking, instant
-                    access to medical results, loyalty rewards, and full family profile
-                    management—all in a secure and easy-to-use interface designed for patient
-                    convenience.
-                </p>
-            </div>
-            <div class="app-card" onclick="openModal('app10')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f2/1f/02/f21f0288-5c12-a8bb-8d4d-528c59a74922/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Smart Minds العقول الذكية</h3>
-                <p class="app-description">
-                    Smart Minds is an engaging educational app that connects students, teachers,
-                    and parents through daily lesson reviews, performance tracking, and
-                    personalized learning. It helps identify strengths and weaknesses in a
-                    competitive and interactive environment.
-                </p>
-            </div>
-            <div class="app-card" onclick="openModal('app11')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/55/4b/63/554b6328-8a48-6bb6-9a7b-4a2714eae539/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Meer</h3>
-                <p class="app-description">
-                    Meer connects talented creatives with business owners in advertising and media. Users can showcase
-                    portfolios, submit project offers, and collaborate seamlessly—all in one secure, talent-focused
-                    platform.
-                </p>
-            </div>
-            <div class="app-card" onclick="openModal('app12')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d5/98/9e/d5989e24-a057-dee9-4b70-0aa6e7b61280/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Noah</h3>
-                <p class="app-description">
-                    Noah redefines wooden product design and craftsmanship. From custom wood
-                    piece creation to professional installation and maintenance, Noah delivers
-                    precision and quality for furniture and wood-based projects.
-                </p>
-            </div>
-            <div class="app-card" onclick="openModal('app13')">
-                <div class="app-icon">
-                    <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/6e/b5/2b6eb55f-ed83-31e3-c0fb-c77675a558a7/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
-                        alt="App Icon" style="width: 100%; height: 100%; border-radius: 20px" />
-                </div>
-                <h3 class="app-title">Meter</h3>
-                <p class="app-description">
-                    Meter is a platform that streamlines survey report requests by connecting
-                    users with local surveying offices. Submit your project, receive competitive
-                    offers, and get the job done efficiently—all in one app.
-                </p>
-            </div>
-
-        </div>
-        <!-- Coming Soon Section -->
-        <div class="hero">
-            <h1>Coming Soon</h1>
-            <p>These apps are currently under development. Stay tuned for exciting launches!</p>
+        <div class="app-card" onclick="openModal('app2')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/9a/0e/df9a0e34-70e0-1862-f35a-61ef18bee89b/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Soldout</h3>
+          <p class="app-description">
+            A community-driven marketplace app showcasing handcrafted products
+            from local families. Soldout offers a seamless shopping experience
+            filled with unique, high-quality items made with care and
+            creativity.
+          </p>
         </div>
 
-        <div class="apps-grid">
-            <div class="app-card coming-soon">
-                <div class="app-icon">
-                    <img src="assets/tawzea.jpg" alt="App Icon"
-                        style="width: 100%; height: 100%; border-radius: 20px;" />
-                </div>
-                <h3 class="app-title">Tawzea</h3>
-                <p class="app-description">Tawzea is an innovative real estate app set to reshape the property market in
-                    Saudi Arabia by streamlining property
-                    distribution, enhancing transparency, and connecting developers, agents, and buyers through smart,
-                    data-driven
-                    solutions..</p>
-            </div>
-            <div class="app-card coming-soon">
-                <div class="app-icon">
-                    <img src="https://nfhc.com.sa/wp-content/themes/nfh/assets/img/nfh-with-cirlcle.png" alt="App Icon"
-                        style="width: 100%; height: 100%; border-radius: 20px;" />
-                </div>
-                <h3 class="app-title">National Finance House (NFH)</h3>
-                <p class="app-description">National Finance House (NFH) aims to be the leading destination for financing
-                    services in Saudi Arabia, offering
-                    innovative and efficient financial solutions aligned with the Kingdom’s financial sector vision.</p>
-            </div>
-            <div class="app-card coming-soon">
-                <div class="app-icon">
-                    <img src="assets/bazaar.jpg" alt="App Icon"
-                        style="width: 100%; height: 100%; border-radius: 20px;" />
-                </div>
-                <h3 class="app-title">Bazaar</h3>
-                <p class="app-description">Bazaar is a next-generation marketplace launching in Syria, introducing fresh
-                    ideas that will transform the way people
-                    buy and sell by offering a smarter, more connected, and user-friendly shopping experience.</p>
-            </div>
+        <div class="app-card" onclick="openModal('app3')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1f/08/6a/1f086a25-2f78-2389-3094-252b74a031cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Crunch</h3>
+          <p class="app-description">
+            Crunch is a powerful finance management app that helps you track
+            expenses, manage budgets, and monitor net worth in real time. With
+            UAE bank integration, smart analytics, and multi-currency support,
+            Crunch gives you total control over your money.
+          </p>
         </div>
 
+        <div class="app-card" onclick="openModal('app4')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/3d/de/613dde95-19e3-d4a3-2f17-4d50325f70a7/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/100x100bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Siru Maps</h3>
+          <p class="app-description">
+            Siru Maps is a cultural exploration app that digitally maps the
+            events and locations of world civilizations. It helps users discover
+            historical connections and shared human heritage through an
+            immersive and educational experience.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app5')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/54/30/f0/5430f095-1b5b-ba89-789e-01dc6ada3578/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Hayatona Clinics</h3>
+          <p class="app-description">
+            Hayatona Clinic is a digital health and wellness platform focused on
+            promoting a healthy lifestyle through expert-led services in
+            nutrition, fitness, and chronic disease management. It offers
+            virtual consultations, daily guidance, educational content, and
+            interactive health tools to support your wellness journey.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app6')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fa/13/05/fa130588-3f4c-775b-e9d4-e46c3c0a7db3/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Smart Sales</h3>
+          <p class="app-description">
+            Smart Sales is a business-focused app that helps store owners and
+            sales teams manage operations, track performance, and streamline
+            daily tasks—empowering better decision-making through visibility and
+            control.
+          </p>
+        </div>
+
+        <div class="app-card" onclick="openModal('app7')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/57/79/d2/5779d2be-ecac-65c6-b8e7-80673e8e334a/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Tayseer Finance</h3>
+          <p class="app-description">
+            Tayseer Finance is a digital financing app that lets users apply
+            for, manage, and track their finance services seamlessly. With
+            electronic applications, secure payment options, and branch-free
+            servicing, it brings modern finance to your fingertips.
+          </p>
+        </div>
+        <div class="app-card" onclick="openModal('app8')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/35/b5/6735b57d-74a0-71c7-08be-34e24b00e75a/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Mountain Lakes Bagels</h3>
+          <p class="app-description">
+            Mountain Lakes Bagels delivers fresh, delicious bagels and breakfast
+            options right to your door. Designed for speed and convenience, the
+            app makes ordering your morning favorites easy and enjoyable—every
+            single day.
+          </p>
+        </div>
+        <div class="app-card" onclick="openModal('app9')">
+          <div class="app-icon">
+            <img
+              src="https://play-lh.googleusercontent.com/1dhK058GKaAh8BZLPrPNEwqupnlmrOHL7GxAN7R6ga7Z-Ike4olhCtGWGOWgmiBZPxs=w240-h480-rw"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Misr Radiology Center (MRC)</h3>
+          <p class="app-description">
+            MRC is a comprehensive radiology app offering appointment booking,
+            instant access to medical results, loyalty rewards, and full family
+            profile management—all in a secure and easy-to-use interface
+            designed for patient convenience.
+          </p>
+        </div>
+        <div class="app-card" onclick="openModal('app10')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f2/1f/02/f21f0288-5c12-a8bb-8d4d-528c59a74922/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Smart Minds العقول الذكية</h3>
+          <p class="app-description">
+            Smart Minds is an engaging educational app that connects students,
+            teachers, and parents through daily lesson reviews, performance
+            tracking, and personalized learning. It helps identify strengths and
+            weaknesses in a competitive and interactive environment.
+          </p>
+        </div>
+        <div class="app-card" onclick="openModal('app11')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/55/4b/63/554b6328-8a48-6bb6-9a7b-4a2714eae539/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Meer</h3>
+          <p class="app-description">
+            Meer connects talented creatives with business owners in advertising
+            and media. Users can showcase portfolios, submit project offers, and
+            collaborate seamlessly—all in one secure, talent-focused platform.
+          </p>
+        </div>
+        <div class="app-card" onclick="openModal('app12')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d5/98/9e/d5989e24-a057-dee9-4b70-0aa6e7b61280/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Noah</h3>
+          <p class="app-description">
+            Noah redefines wooden product design and craftsmanship. From custom
+            wood piece creation to professional installation and maintenance,
+            Noah delivers precision and quality for furniture and wood-based
+            projects.
+          </p>
+        </div>
+        <div class="app-card" onclick="openModal('app13')">
+          <div class="app-icon">
+            <img
+              src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/6e/b5/2b6eb55f-ed83-31e3-c0fb-c77675a558a7/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Meter</h3>
+          <p class="app-description">
+            Meter is a platform that streamlines survey report requests by
+            connecting users with local surveying offices. Submit your project,
+            receive competitive offers, and get the job done efficiently—all in
+            one app.
+          </p>
+        </div>
+      </div>
+      <!-- Coming Soon Section -->
+      <div class="hero">
+        <h1>Coming Soon</h1>
+        <p>
+          These apps are currently under development. Stay tuned for exciting
+          launches!
+        </p>
+      </div>
+
+      <div class="apps-grid">
+        <div class="app-card coming-soon">
+          <div class="app-icon">
+            <img
+              src="assets/tawzea.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Tawzea</h3>
+          <p class="app-description">
+            Tawzea is an innovative real estate app set to reshape the property
+            market in Saudi Arabia by streamlining property distribution,
+            enhancing transparency, and connecting developers, agents, and
+            buyers through smart, data-driven solutions..
+          </p>
+        </div>
+        <div class="app-card coming-soon">
+          <div class="app-icon">
+            <img
+              src="https://nfhc.com.sa/wp-content/themes/nfh/assets/img/nfh-with-cirlcle.png"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">National Finance House (NFH)</h3>
+          <p class="app-description">
+            National Finance House (NFH) aims to be the leading destination for
+            financing services in Saudi Arabia, offering innovative and
+            efficient financial solutions aligned with the Kingdom’s financial
+            sector vision.
+          </p>
+        </div>
+        <div class="app-card coming-soon">
+          <div class="app-icon">
+            <img
+              src="assets/bazaar.jpg"
+              alt="App Icon"
+              style="width: 100%; height: 100%; border-radius: 20px"
+            />
+          </div>
+          <h3 class="app-title">Bazaar</h3>
+          <p class="app-description">
+            Bazaar is a next-generation marketplace launching in Syria,
+            introducing fresh ideas that will transform the way people buy and
+            sell by offering a smarter, more connected, and user-friendly
+            shopping experience.
+          </p>
+        </div>
+      </div>
     </div>
-
 
     <!-- Modal -->
     <div class="modal" id="modal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-            <div id="modal-body">
-                <!-- Modal content will be dynamically inserted here -->
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div id="modal-body">
+          <!-- Modal content will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+    </div>
+
+        <!-- Contact Section -->
+        <div class="hero">
+            <h1>Get In Touch</h1>
+            <p>Have a project in mind or want to collaborate? I'd love to hear from you!</p>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Whether you have a question, a project idea, or just want to say hello, feel free to reach out. I'll get back to you as soon as possible.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>dev@mohamedmamdouh.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zM6 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+201061715164</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <svg fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Giza, Egypt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form action="https://formsubmit.co/dev@mohamedmamdouh.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Message">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or idea..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Modal -->
+
     <script>
-        const appData = {
-            app1: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg",
-                iconType: "image",
-                title: "Diet Watchers",
-                description:
-                    "Diet Watchers is a cross-platform wellness and meal delivery app built with clean architecture and modular design. It leverages Flutter for high-performance UI, integrates Firebase for real-time data handling and authentication, and uses PHP Laravel for scalable backend services. The app supports secure payments, GPS-based delivery tracking, and personalized nutrition workflows tailored for Saudi Arabia.",
-                tech: [
-                    "Flutter",
-                    "Firebase Notifications",
-                    "PHP Laravel",
-                    "Moyasar",
-                    "Google Maps API",
-                    "Agora RTC",
-                ],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/diet-watchers-eat-healthy/id6460976436",
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.diet.watchers.app&hl=en",
-                        icon: "🤖",
-                    },
-                ],
+      const appData = {
+        app1: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg",
+          iconType: "image",
+          title: "Diet Watchers",
+          description:
+            "Diet Watchers is a cross-platform wellness and meal delivery app built with clean architecture and modular design. It leverages Flutter for high-performance UI, integrates Firebase for real-time data handling and authentication, and uses PHP Laravel for scalable backend services. The app supports secure payments, GPS-based delivery tracking, and personalized nutrition workflows tailored for Saudi Arabia.",
+          tech: [
+            "Flutter",
+            "Firebase Notifications",
+            "PHP Laravel",
+            "Moyasar",
+            "Google Maps API",
+            "Agora RTC",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/diet-watchers-eat-healthy/id6460976436",
+              icon: "🍎",
             },
-            app2: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/9a/0e/df9a0e34-70e0-1862-f35a-61ef18bee89b/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Soldout",
-                description:
-                    "Soldout is a community-focused e-commerce app that empowers local artisans and productive families to showcase and sell their handcrafted goods. Built with Flutter for a fluid cross-platform experience, it leverages Firebase Functions, Firestore and Node.js for real-time data, secure authentication, and scalable backend operations. The app features intuitive browsing, secure checkout, and seller tools to manage orders and inventory effortlessly.",
-                tech: [
-                    "Flutter",
-                    "Firebase",
-                    "PHP Laravel",
-                    "Cloud Firestore",
-                    "URWAY",
-                    "MVC",
-                ],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/soldout-ksa/id6449216198", // Replace with actual App Store link if available
-                        icon: "🍎",
-                    },
-                ],
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.diet.watchers.app&hl=en",
+              icon: "🤖",
             },
-            app3: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1f/08/6a/1f086a25-2f78-2389-3094-252b74a031cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg",
-                iconType: "image",
-                title: "Crunch",
-                description:
-                    "Crunch is a finance management app built for real-time tracking and budgeting. It integrates with 18 major UAE banks using secure APIs, providing users with an all-in-one dashboard for net worth, expenses, and goal tracking. Built with Flutter and Firebase for smooth performance, Crunch also offers multi-currency support, automatic categorization, insightful analytics, and secure bank-level encryption—designed to deliver a seamless and private financial experience.",
-                tech: [
-                    "Flutter",
-                    "Firebase Notifications",
-                    "Apple In-App Purchases",
-                    "Google Pay",
-                    "Node.js",
-                    "Cloud Functions",
-                    "BLOC"
-                ],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/ae/app/crunch-personal-finance/id1571747682", // Replace with the actual App Store link
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.mobile.crunchapp", // Replace with the actual Google Play link
-                        icon: "🤖",
-                    },
-                ],
+          ],
+        },
+        app2: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/df/9a/0e/df9a0e34-70e0-1862-f35a-61ef18bee89b/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Soldout",
+          description:
+            "Soldout is a community-focused e-commerce app that empowers local artisans and productive families to showcase and sell their handcrafted goods. Built with Flutter for a fluid cross-platform experience, it leverages Firebase Functions, Firestore and Node.js for real-time data, secure authentication, and scalable backend operations. The app features intuitive browsing, secure checkout, and seller tools to manage orders and inventory effortlessly.",
+          tech: [
+            "Flutter",
+            "Firebase",
+            "PHP Laravel",
+            "Cloud Firestore",
+            "URWAY",
+            "MVC",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/soldout-ksa/id6449216198", // Replace with actual App Store link if available
+              icon: "🍎",
             },
-            app4: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/3d/de/613dde95-19e3-d4a3-2f17-4d50325f70a7/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/100x100bb.jpg",
-                iconType: "image",
-                title: "Siru Maps",
-                description:
-                    "Siru Maps is an educational platform that digitally synchronizes the historical timelines and geographic locations of civilizations across the globe. Built with Flutter and powered by Firebase, the app delivers rich cultural content, interactive maps, and historical data visualization. Its mission is to foster global cultural understanding by highlighting the interconnectedness of human heritage.",
-                tech: [
-                    "Flutter",
-                    "Firebase Notifications",
-                    "Google Maps API",
-                    "PHP Laravel",
-                ],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/siru-map-%D8%AE%D8%B1%D8%A7%D8%A6%D8%B7-%D8%B3%D9%8A%D8%B1%D9%88%D8%A7/id1645884389", // Replace with actual App Store link if available
-                        icon: "🍎",
-                    },
-
-                ],
+          ],
+        },
+        app3: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1f/08/6a/1f086a25-2f78-2389-3094-252b74a031cf/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/100x100bb.jpg",
+          iconType: "image",
+          title: "Crunch",
+          description:
+            "Crunch is a finance management app built for real-time tracking and budgeting. It integrates with 18 major UAE banks using secure APIs, providing users with an all-in-one dashboard for net worth, expenses, and goal tracking. Built with Flutter and Firebase for smooth performance, Crunch also offers multi-currency support, automatic categorization, insightful analytics, and secure bank-level encryption—designed to deliver a seamless and private financial experience.",
+          tech: [
+            "Flutter",
+            "Firebase Notifications",
+            "Apple In-App Purchases",
+            "Google Pay",
+            "Node.js",
+            "Cloud Functions",
+            "BLOC",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/ae/app/crunch-personal-finance/id1571747682", // Replace with the actual App Store link
+              icon: "🍎",
             },
-            app5: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/54/30/f0/5430f095-1b5b-ba89-789e-01dc6ada3578/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Hayatona Clinic",
-                description:
-                    "Hayatona Clinic is a digital health platform designed to promote healthy living through virtual consultations, personalized nutrition, fitness tracking, and chronic disease prevention. Built with Flutter and Firebase, it supports secure video calls, real-time messaging, a rich library of health content, and wellness e-commerce features. Interactive tools like calorie and BMI calculators, along with gamified health challenges, help users stay engaged and proactive in managing their well-being.",
-                tech: [
-                    "Flutter",
-                    "Firebase Notifications",
-                    "PHP Laravel",
-                    "Moyasar",
-                    "Agora SDK",
-                ],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/hayatona-clinics-%D8%B9%D9%8A%D8%A7%D8%AF%D8%A7%D8%AA-%D8%AD%D9%8A%D8%A7%D8%AA%D9%86%D8%A7/id1582945676", // Replace with actual App Store link
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=sa.das360.iyadatouna",
-                        icon: "🤖",
-                    },
-                ],
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.mobile.crunchapp", // Replace with the actual Google Play link
+              icon: "🤖",
             },
-            app6: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fa/13/05/fa130588-3f4c-775b-e9d4-e46c3c0a7db3/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Smart Sales",
-                description:
-                    "Smart Sales is a sales and store management app designed to help business owners track operations, monitor sales performance, and manage inventory effectively. Built with Flutter and powered by a robust .NET backend, it enables real-time data access, user-friendly dashboards, and seamless store activity tracking for growing businesses.",
-                tech: ["Flutter", ".NET", "SQL Server", "Google Play API"],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/eg/app/smart-sales/id1617817529", // Replace with actual App Store link if available
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.sky.smartsales&hl=en", // Replace with actual Google Play link if available
-                        icon: "🤖",
-                    },
-                ],
+          ],
+        },
+        app4: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/3d/de/613dde95-19e3-d4a3-2f17-4d50325f70a7/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/100x100bb.jpg",
+          iconType: "image",
+          title: "Siru Maps",
+          description:
+            "Siru Maps is an educational platform that digitally synchronizes the historical timelines and geographic locations of civilizations across the globe. Built with Flutter and powered by Firebase, the app delivers rich cultural content, interactive maps, and historical data visualization. Its mission is to foster global cultural understanding by highlighting the interconnectedness of human heritage.",
+          tech: [
+            "Flutter",
+            "Firebase Notifications",
+            "Google Maps API",
+            "PHP Laravel",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/siru-map-%D8%AE%D8%B1%D8%A7%D8%A6%D8%B7-%D8%B3%D9%8A%D8%B1%D9%88%D8%A7/id1645884389", // Replace with actual App Store link if available
+              icon: "🍎",
             },
-            app7: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/57/79/d2/5779d2be-ecac-65c6-b8e7-80673e8e334a/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Tayseer Finance",
-                description:
-                    "Tayseer Finance is a digital financing app that lets users apply for, manage, and track their finance services seamlessly. With electronic applications, secure payment options, and branch-free servicing, it brings modern finance to your fingertips.",
-                tech: [
-                    "Flutter",
-                    "Django",
-                    "PostgreSQL",
-                    "Firebase Messaging",
-                    "Oracle",
-                    "Google Maps API",
-                    "Firebase Notifications",
-                    "Shorebird",
-                    "Codemagic CI/CD",
-                    "Hyperpay",
-                    "Apple Pay",
-                ],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/eg/app/tayseer-finance/id1509311106", // Add actual App Store URL if available
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.tayseer_app_v2&hl=en", // Add actual Google Play URL if available
-                        icon: "🤖",
-                    },
-                ],
+          ],
+        },
+        app5: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/54/30/f0/5430f095-1b5b-ba89-789e-01dc6ada3578/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Hayatona Clinic",
+          description:
+            "Hayatona Clinic is a digital health platform designed to promote healthy living through virtual consultations, personalized nutrition, fitness tracking, and chronic disease prevention. Built with Flutter and Firebase, it supports secure video calls, real-time messaging, a rich library of health content, and wellness e-commerce features. Interactive tools like calorie and BMI calculators, along with gamified health challenges, help users stay engaged and proactive in managing their well-being.",
+          tech: [
+            "Flutter",
+            "Firebase Notifications",
+            "PHP Laravel",
+            "Moyasar",
+            "Agora SDK",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/hayatona-clinics-%D8%B9%D9%8A%D8%A7%D8%AF%D8%A7%D8%AA-%D8%AD%D9%8A%D8%A7%D8%AA%D9%86%D8%A7/id1582945676", // Replace with actual App Store link
+              icon: "🍎",
             },
-            app8: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/35/b5/6735b57d-74a0-71c7-08be-34e24b00e75a/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Mountain Lakes Bagels",
-                description:
-                    "Mountain Lakes Bagels delivers fresh, delicious bagels and breakfast options right to your door. Designed for speed and convenience, the app makes ordering your morning favorites easy and enjoyable—every single day.",
-                tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Notifications, Google Maps API, Stripe, Apple Pay"],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/mountain-lakes-bagels/id6478916309", // Add actual App Store URL if available
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.bagels.ml", // Add actual Google Play URL if available
-                        icon: "🤖",
-                    },
-                ],
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=sa.das360.iyadatouna",
+              icon: "🤖",
             },
-            app9: {
-                icon: "https://play-lh.googleusercontent.com/1dhK058GKaAh8BZLPrPNEwqupnlmrOHL7GxAN7R6ga7Z-Ike4olhCtGWGOWgmiBZPxs=w240-h480-rw",
-                iconType: "image",
-                title: "Misr Radiology Center (MRC)",
-                description:
-                    "MRC is a comprehensive radiology app offering appointment booking, instant access to medical results, loyalty rewards, and full family profile management—all in a secure and easy-to-use interface designed for patient convenience.",
-                tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Notifications"],
-                stores: [
-
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.plementus.mrc",
-                        icon: "🤖",
-                    },
-                ],
-            }
-            ,
-            app10: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f2/1f/02/f21f0288-5c12-a8bb-8d4d-528c59a74922/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Smart Minds - العقول الذكية",
-                description:
-                    "Smart Minds is an engaging educational app that connects students, teachers, and parents through daily lesson reviews, performance tracking, and personalized learning. It helps identify strengths and weaknesses in a competitive and interactive environment.",
-                tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Notifciations, Bloc, Interactive Gestures"],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/%D8%A7%D9%84%D8%B9%D9%82%D9%88%D9%84-%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9/id6451442146", // Replace with actual App Store link if available
-                        icon: "🍎",
-                    },
-                ],
+          ],
+        },
+        app6: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fa/13/05/fa130588-3f4c-775b-e9d4-e46c3c0a7db3/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Smart Sales",
+          description:
+            "Smart Sales is a sales and store management app designed to help business owners track operations, monitor sales performance, and manage inventory effectively. Built with Flutter and powered by a robust .NET backend, it enables real-time data access, user-friendly dashboards, and seamless store activity tracking for growing businesses.",
+          tech: ["Flutter", ".NET", "SQL Server", "Google Play API"],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/eg/app/smart-sales/id1617817529", // Replace with actual App Store link if available
+              icon: "🍎",
             },
-            app11: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/55/4b/63/554b6328-8a48-6bb6-9a7b-4a2714eae539/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Meer",
-                description:
-                    "Meer connects talented creatives with business owners in advertising and media. Users can showcase portfolios, submit project offers, and collaborate seamlessly—all in one secure, talent-focused platform.",
-                tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Notifciations, Bloc"],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/meer/id1610110479", // Add actual App Store URL if available
-                        icon: "🍎",
-                    },
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.sky.smartsales&hl=en", // Replace with actual Google Play link if available
+              icon: "🤖",
+            },
+          ],
+        },
+        app7: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/57/79/d2/5779d2be-ecac-65c6-b8e7-80673e8e334a/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Tayseer Finance",
+          description:
+            "Tayseer Finance is a digital financing app that lets users apply for, manage, and track their finance services seamlessly. With electronic applications, secure payment options, and branch-free servicing, it brings modern finance to your fingertips.",
+          tech: [
+            "Flutter",
+            "Django",
+            "PostgreSQL",
+            "Firebase Messaging",
+            "Oracle",
+            "Google Maps API",
+            "Firebase Notifications",
+            "Shorebird",
+            "Codemagic CI/CD",
+            "Hyperpay",
+            "Apple Pay",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/eg/app/tayseer-finance/id1509311106", // Add actual App Store URL if available
+              icon: "🍎",
+            },
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.tayseer_app_v2&hl=en", // Add actual Google Play URL if available
+              icon: "🤖",
+            },
+          ],
+        },
+        app8: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/35/b5/6735b57d-74a0-71c7-08be-34e24b00e75a/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Mountain Lakes Bagels",
+          description:
+            "Mountain Lakes Bagels delivers fresh, delicious bagels and breakfast options right to your door. Designed for speed and convenience, the app makes ordering your morning favorites easy and enjoyable—every single day.",
+          tech: [
+            "Flutter",
+            "PHP Laravel",
+            "MySQL",
+            "Firebase Notifications, Google Maps API, Stripe, Apple Pay",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/mountain-lakes-bagels/id6478916309", // Add actual App Store URL if available
+              icon: "🍎",
+            },
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.bagels.ml", // Add actual Google Play URL if available
+              icon: "🤖",
+            },
+          ],
+        },
+        app9: {
+          icon: "https://play-lh.googleusercontent.com/1dhK058GKaAh8BZLPrPNEwqupnlmrOHL7GxAN7R6ga7Z-Ike4olhCtGWGOWgmiBZPxs=w240-h480-rw",
+          iconType: "image",
+          title: "Misr Radiology Center (MRC)",
+          description:
+            "MRC is a comprehensive radiology app offering appointment booking, instant access to medical results, loyalty rewards, and full family profile management—all in a secure and easy-to-use interface designed for patient convenience.",
+          tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Notifications"],
+          stores: [
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.plementus.mrc",
+              icon: "🤖",
+            },
+          ],
+        },
+        app10: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f2/1f/02/f21f0288-5c12-a8bb-8d4d-528c59a74922/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Smart Minds - العقول الذكية",
+          description:
+            "Smart Minds is an engaging educational app that connects students, teachers, and parents through daily lesson reviews, performance tracking, and personalized learning. It helps identify strengths and weaknesses in a competitive and interactive environment.",
+          tech: [
+            "Flutter",
+            "PHP Laravel",
+            "MySQL",
+            "Firebase Notifciations, Bloc, Interactive Gestures",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/%D8%A7%D9%84%D8%B9%D9%82%D9%88%D9%84-%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9/id6451442146", // Replace with actual App Store link if available
+              icon: "🍎",
+            },
+          ],
+        },
+        app11: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/55/4b/63/554b6328-8a48-6bb6-9a7b-4a2714eae539/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Meer",
+          description:
+            "Meer connects talented creatives with business owners in advertising and media. Users can showcase portfolios, submit project offers, and collaborate seamlessly—all in one secure, talent-focused platform.",
+          tech: [
+            "Flutter",
+            "PHP Laravel",
+            "MySQL",
+            "Firebase Notifciations, Bloc",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/meer/id1610110479", // Add actual App Store URL if available
+              icon: "🍎",
+            },
+          ],
+        },
+        app12: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d5/98/9e/d5989e24-a057-dee9-4b70-0aa6e7b61280/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "No7 - نوح",
+          description:
+            "Noah redefines wooden product design and craftsmanship. From custom wood piece creation to professional installation and maintenance, Noah delivers precision and quality for furniture and wood-based projects.",
+          tech: [
+            "Flutter",
+            "PHP Laravel",
+            "MySQL",
+            "Firebase Notifications, Bloc, Amazon PayFort",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/no7-%D9%86%D9%88%D8%AD/id1665901200", // Replace with actual App Store URL if available
+              icon: "🍎",
+            },
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=app.no7.app&hl=en", // Replace with actual Google Play URL if available
+              icon: "🤖",
+            },
+          ],
+        },
+        app13: {
+          icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/6e/b5/2b6eb55f-ed83-31e3-c0fb-c77675a558a7/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
+          iconType: "image",
+          title: "Meter",
+          description:
+            "Meter is a platform that streamlines survey report requests by connecting users with local surveying offices. Submit your project, receive competitive offers, and get the job done efficiently—all in one app.",
+          tech: [
+            "Flutter",
+            "Spring Boot",
+            "PostgreSQL",
+            "Firebase Notifications",
+          ],
+          stores: [
+            {
+              name: "App Store",
+              url: "https://apps.apple.com/us/app/meter-app/id6664052882", // Add actual App Store URL if available
+              icon: "🍎",
+            },
+            {
+              name: "Google Play",
+              url: "https://play.google.com/store/apps/details?id=com.solinovatiion.meter&pli=1", // Add actual Google Play URL if available
+              icon: "🤖",
+            },
+          ],
+        },
+      };
 
-                ],
-            }
-            , app12: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d5/98/9e/d5989e24-a057-dee9-4b70-0aa6e7b61280/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "No7 - نوح",
-                description:
-                    "Noah redefines wooden product design and craftsmanship. From custom wood piece creation to professional installation and maintenance, Noah delivers precision and quality for furniture and wood-based projects.",
-                tech: ["Flutter", "PHP Laravel", "MySQL", "Firebase Notifications, Bloc, Amazon PayFort"],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/no7-%D9%86%D9%88%D8%AD/id1665901200", // Replace with actual App Store URL if available
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=app.no7.app&hl=en", // Replace with actual Google Play URL if available
-                        icon: "🤖",
-                    },
-                ],
-            }
-            ,
-            app13: {
-                icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/6e/b5/2b6eb55f-ed83-31e3-c0fb-c77675a558a7/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
-                iconType: "image",
-                title: "Meter",
-                description:
-                    "Meter is a platform that streamlines survey report requests by connecting users with local surveying offices. Submit your project, receive competitive offers, and get the job done efficiently—all in one app.",
-                tech: ["Flutter", "Spring Boot", "PostgreSQL", "Firebase Notifications"],
-                stores: [
-                    {
-                        name: "App Store",
-                        url: "https://apps.apple.com/us/app/meter-app/id6664052882", // Add actual App Store URL if available
-                        icon: "🍎",
-                    },
-                    {
-                        name: "Google Play",
-                        url: "https://play.google.com/store/apps/details?id=com.solinovatiion.meter&pli=1", // Add actual Google Play URL if available
-                        icon: "🤖",
-                    },
-                ],
-            }
+      function openModal(appId) {
+        const app = appData[appId];
+        const modal = document.getElementById("modal");
+        const modalBody = document.getElementById("modal-body");
 
+        // Generate the icon HTML based on type
+        let iconHTML;
+        if (app.iconType === "image") {
+          iconHTML = `<img src="${app.icon}" alt="${app.title} Icon" style="width: 100%; height: 100%; border-radius: 30px; object-fit: cover;" />`;
+        } else {
+          iconHTML = app.icon;
+        }
 
-
-        };
-
-        function openModal(appId) {
-            const app = appData[appId];
-            const modal = document.getElementById("modal");
-            const modalBody = document.getElementById("modal-body");
-
-            // Generate the icon HTML based on type
-            let iconHTML;
-            if (app.iconType === "image") {
-                iconHTML = `<img src="${app.icon}" alt="${app.title} Icon" style="width: 100%; height: 100%; border-radius: 30px; object-fit: cover;" />`;
-            } else {
-                iconHTML = app.icon;
-            }
-
-            modalBody.innerHTML = `
+        modalBody.innerHTML = `
                       <div class="modal-app-icon">${iconHTML}</div>
                       <h2 class="modal-title">${app.title}</h2>
                       <p class="modal-description">${app.description}</p>
@@ -1384,52 +927,50 @@
                           <h3>Tech Stack</h3>
                           <div class="tech-tags">
                               ${app.tech
-                    .map(
-                        (tech) =>
-                            `<span class="tech-tag">${tech}</span>`
-                    )
-                    .join("")}
+                                .map(
+                                  (tech) =>
+                                    `<span class="tech-tag">${tech}</span>`
+                                )
+                                .join("")}
                           </div>
                       </div>
                       <div class="store-links">
                           ${app.stores
-                    .map(
-                        (store) => `
+                            .map(
+                              (store) => `
                               <a href="${store.url}" class="store-link" target="_blank">
                                   <span>${store.icon}</span>
                                   Download on ${store.name}
                               </a>
                           `
-                    )
-                    .join("")}
+                            )
+                            .join("")}
                       </div>
                   `;
 
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("modal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Close modal when clicking outside
+      document.getElementById("modal").addEventListener("click", function (e) {
+        if (e.target === this) {
+          closeModal();
         }
+      });
 
-        function closeModal() {
-            const modal = document.getElementById("modal");
-            modal.classList.remove("active");
-            document.body.style.overflow = "";
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
         }
-
-        // Close modal when clicking outside
-        document.getElementById("modal").addEventListener("click", function (e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") {
-                closeModal();
-            }
-        });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
