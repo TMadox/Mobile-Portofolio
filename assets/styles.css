@@ -107,7 +107,7 @@ body {
 }
 
 .skill-tag {
-  background: rgba(139, 92, 246, 0.15);
+  background: #8b5cf626;
   border: 1px solid rgba(139, 92, 246, 0.3);
   color: #c4b5fd;
   padding: 0.25rem 0.75rem;
@@ -722,7 +722,6 @@ body {
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 24px;
   padding: 3rem;
-  margin: 0 2rem;
   margin-bottom: 8rem;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
