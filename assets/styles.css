@@ -147,14 +147,85 @@ body {
   );
   animation: rotate 20s linear infinite;
 }
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
 
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.1),
+    rgba(6, 182, 212, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+.service-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: pulse 2s infinite;
+}
+.service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card > p {
+  color: #d1d5db;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
 .bio-header {
   text-align: center;
   margin-bottom: 3rem;
   position: relative;
   z-index: 1;
 }
-
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
 .bio-header h2 {
   font-size: 2.5rem;
   font-weight: 800;
@@ -164,7 +235,40 @@ body {
   color: transparent;
   margin-bottom: 0.5rem;
 }
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
 
+.service-features li {
+  color: #a1a1aa;
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.service-features li:last-child {
+  border-bottom: none;
+}
+
+.service-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.service-features li:hover {
+  color: #ffffff;
+  padding-left: 2rem;
+}
 .bio-header p {
   font-size: 1.1rem;
   color: #9ca3af;
