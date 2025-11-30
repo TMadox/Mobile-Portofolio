@@ -14,6 +14,7 @@
         content="Crafting digital experiences that make a difference. Explore my gallery of previous work.">
     <meta property="og:image" content="https://mohamedmamdouh.com/assets/main_logo.png">
 
+
     <!-- Use a full URL; ideally 1200x630px for best display -->
     <meta property="og:url" content="https://mohamedmamdouh.com">
     <meta property="og:type" content="website">
@@ -321,6 +322,8 @@
                 </div>
             </div>
         </div>
+
+
 
         <div class="hero" id="apps">
             <h1>Published Apps</h1>
@@ -659,7 +662,17 @@
                             <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" required placeholder="What's this about?">
                         </div>
-
+                        <div class="form-group">
+                            <label for="inquiry-type">I'm interested in</label>
+                            <select id="inquiry-type" name="inquiry-type" required>
+                                <option value="">Select an option...</option>
+                                <option value="full-time">Full-time position</option>
+                                <option value="freelance">Freelance project</option>
+                                <option value="consulting">Technical consulting</option>
+                                <option value="partnership">Partnership opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="5" required
