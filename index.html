@@ -28,6 +28,32 @@
 </head>
 
 <body>
+    <!-- Floating Sections Navigation -->
+    <nav class="sections-nav">
+        <div class="sections-nav-content">
+            <a href="#about" class="section-link active" data-section="about">
+                <span class="section-dot"></span>
+                <span class="section-label">About</span>
+            </a>
+            <a href="#services" class="section-link" data-section="services">
+                <span class="section-dot"></span>
+                <span class="section-label">Services</span>
+            </a>
+            <a href="#apps" class="section-link" data-section="apps">
+                <span class="section-dot"></span>
+                <span class="section-label">Published Apps</span>
+            </a>
+            <a href="#coming-soon" class="section-link" data-section="coming-soon">
+                <span class="section-dot"></span>
+                <span class="section-label">Coming Soon</span>
+            </a>
+            <a href="#contact" class="section-link" data-section="contact">
+                <span class="section-dot"></span>
+                <span class="section-label">Contact</span>
+            </a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="hero">
             <h1>Portfolio Showcase</h1>
@@ -45,11 +71,15 @@
                     <div class="bio-subtitle">Senior Flutter Developer</div>
                     <h2 class="bio-title">Building Cross-Platform Excellence</h2>
                     <p class="bio-text">
-                        With over 5 years of experience as a Software Engineer, I specialize in designing and building
-                        high-quality, scalable applications across mobile, web, and backend systems. My expertise spans
+                        With over 5 years of experience as a Software Engineer, I specialize in designing and
+                        building
+                        high-quality, scalable applications across mobile, web, and backend systems. My
+                        expertise spans
                         clean architecture, API design and integration, performance optimization, and delivering
-                        polished user experiences. I excel at problem-solving, leading development teams, and mentoring
-                        developers to build reliable, user-centric software solutions across diverse technologies.
+                        polished user experiences. I excel at problem-solving, leading development teams, and
+                        mentoring
+                        developers to build reliable, user-centric software solutions across diverse
+                        technologies.
                     </p>
                     <div class="skills-tags">
                         <span class="skill-tag">Flutter</span>
@@ -74,7 +104,8 @@
                         <span class="skill-tag" style="background: #20b6fc26;">Code Review</span>
                         <span class="skill-tag" style="background: #20b6fc26;">Technical Writing</span>
                         <span class="skill-tag" style="background: #20b6fc26;">Agile/Scrum</span>
-                        <span class="skill-tag" style="background: #20b6fc26;">Cross-functional Collaboration</span>
+                        <span class="skill-tag" style="background: #20b6fc26;">Cross-functional
+                            Collaboration</span>
                         <span class="skill-tag" style="background: #20b6fc26;">Project Management</span>
                         <span class="skill-tag" style="background: #20b6fc26;">Performance Optimization</span>
                         <span class="skill-tag" style="background: #20b6fc26;">System Architecture</span>
@@ -92,7 +123,7 @@
 
 
         <!-- Personal Bio Section -->
-        <div class="personal-bio">
+        <div class="personal-bio" id="about">
             <div class="bio-header">
                 <h2>About Me</h2>
                 <p>
@@ -193,10 +224,11 @@
             </div>
         </div>
         <!-- Services Section -->
-        <div class="hero">
+        <div class="hero" id="services">
             <h1>Services I Provide</h1>
             <p>
-                Comprehensive development solutions tailored to bring your ideas to life with cutting-edge technology
+                Comprehensive development solutions tailored to bring your ideas to life with cutting-edge
+                technology
                 and best practices
             </p>
         </div>
@@ -206,7 +238,8 @@
                     <div class="service-icon">📱</div>
                     <h3>Mobile App Development</h3>
                     <p>Build high-performance cross-platform mobile applications using Flutter. From concept to
-                        deployment, I create apps that deliver exceptional user experiences on both iOS and Android.</p>
+                        deployment, I create apps that deliver exceptional user experiences on both iOS and
+                        Android.</p>
                     <ul class="service-features">
                         <li>Cross-platform Flutter development</li>
                         <li>Native iOS & Android integration</li>
@@ -218,8 +251,10 @@
                 <div class="service-card">
                     <div class="service-icon">🎨</div>
                     <h3>UI/UX Design Implementation</h3>
-                    <p>Transform design mockups into pixel-perfect, responsive interfaces. I specialize in creating
-                        beautiful, intuitive user interfaces that prioritize user experience and accessibility.</p>
+                    <p>Transform design mockups into pixel-perfect, responsive interfaces. I specialize in
+                        creating
+                        beautiful, intuitive user interfaces that prioritize user experience and accessibility.
+                    </p>
                     <ul class="service-features">
                         <li>Responsive design implementation</li>
                         <li>Custom animations & transitions</li>
@@ -231,7 +266,8 @@
                 <div class="service-card">
                     <div class="service-icon">🔌</div>
                     <h3>API Integration & Development</h3>
-                    <p>Seamlessly connect your applications with third-party services and build robust APIs. Expert in
+                    <p>Seamlessly connect your applications with third-party services and build robust APIs.
+                        Expert in
                         RESTful APIs, WebSockets, and real-time data synchronization.</p>
                     <ul class="service-features">
                         <li>RESTful API integration</li>
@@ -244,8 +280,10 @@
                 <div class="service-card">
                     <div class="service-icon">🏗️</div>
                     <h3>Architecture & Code Review</h3>
-                    <p>Ensure your codebase follows best practices with clean architecture, SOLID principles, and
-                        maintainable code structures. I provide comprehensive code audits and architectural guidance.
+                    <p>Ensure your codebase follows best practices with clean architecture, SOLID principles,
+                        and
+                        maintainable code structures. I provide comprehensive code audits and architectural
+                        guidance.
                     </p>
                     <ul class="service-features">
                         <li>Clean architecture implementation</li>
@@ -258,7 +296,8 @@
                 <div class="service-card">
                     <div class="service-icon">👥</div>
                     <h3>Team Leadership & Mentorship</h3>
-                    <p>Lead development teams to success with proven methodologies and hands-on mentorship. I help teams
+                    <p>Lead development teams to success with proven methodologies and hands-on mentorship. I
+                        help teams
                         adopt best practices, improve workflows, and deliver quality software consistently.</p>
                     <ul class="service-features">
                         <li>Technical team leadership</li>
@@ -283,7 +322,7 @@
             </div>
         </div>
 
-        <div class="hero">
+        <div class="hero" id="apps">
             <h1>Published Apps</h1>
             <p>
                 Explore a selection of published applications I've contributed to,
@@ -468,7 +507,7 @@
                 </p>
             </div>
         </div>
-        <div class="hero">
+        <div class="hero" id="coming-soon">
             <h1>Coming Soon</h1>
             <p>
                 These apps are currently under development. Stay tuned for exciting
@@ -532,7 +571,7 @@
 
 
     <!-- Contact Section -->
-    <div class="hero">
+    <div class="hero" id="contact">
         <h1>Get In Touch</h1>
         <p>Have a project in mind or want to collaborate? I'd love to hear from you!</p>
     </div>
@@ -541,7 +580,8 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Let's Connect</h3>
-                    <p>Whether you have a question, a project idea, or just want to say hello, feel free to reach out.
+                    <p>Whether you have a question, a project idea, or just want to say hello, feel free to reach
+                        out.
                         I'll
                         get back to you as soon as possible.</p>
 
@@ -645,6 +685,53 @@
     <!-- Modal -->
 
     <script>
+        // Sections navigation scroll tracking
+        const sections = document.querySelectorAll('[id]');
+        const navLinks = document.querySelectorAll('.section-link');
+
+        function setActiveSection() {
+            let current = '';
+            const scrollPosition = window.scrollY + 250; // Account for fixed nav offset
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Only update if current section is one of our nav sections
+            const validSections = ['about', 'services', 'apps', 'coming-soon', 'contact'];
+            if (validSections.includes(current)) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        }
+
+        // Call it once on load to set initial state
+        setActiveSection();
+
+        // Listen to scroll
+        window.addEventListener('scroll', setActiveSection);
+
+        // Smooth scroll for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
         const appData = {
             app1: {
                 icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b6/7f/e3/b67fe304-52f3-bf52-9d76-8f87390546e0/AppIcon-0-0-1x_U007emarketing-0-11-0-0-85-220.png/100x100bb.jpg",
