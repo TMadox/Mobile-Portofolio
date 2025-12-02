@@ -36,6 +36,10 @@
                 <span class="section-dot"></span>
                 <span class="section-label">About</span>
             </a>
+            <a href="#experience" class="section-link" data-section="experience">
+                <span class="section-dot"></span>
+                <span class="section-label">Experience</span>
+            </a>
             <a href="#services" class="section-link" data-section="services">
                 <span class="section-dot"></span>
                 <span class="section-label">Services</span>
@@ -143,29 +147,36 @@
                 <div class="bio-card">
                     <div class="bio-card-icon">📧</div>
                     <h3>Contact Information</h3>
-                    <div class="bio-info-item">
+                    <a href="mailto:dev@mohamedmamdouh.com" class="bio-info-item bio-info-link">
                         <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                         </svg>
                         <span>dev@mohamedmamdouh.com</span>
-                    </div>
-                    <div class="bio-info-item">
+                    </a>
+                    <a href="tel:+201061715164" class="bio-info-item bio-info-link">
                         <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zM6 4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4z"
                                 clip-rule="evenodd" />
                         </svg>
                         <span>+201061715164</span>
-                    </div>
-                    <div class="bio-info-item">
-                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd" />
+                    </a>
+                    <a href="https://linkedin.com/in/mohamedmamdouhamer" target="_blank"
+                        class="bio-info-item bio-info-link">
+                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
-                        <span>Giza, Egypt</span>
-                    </div>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/TMadox" target="_blank" class="bio-info-item bio-info-link">
+                        <svg class="bio-info-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
                 </div>
 
                 <!-- Education & Experience -->
@@ -224,6 +235,145 @@
                 </div>
             </div>
         </div>
+
+        <!-- Work Experience Section -->
+        <div class="hero" id="experience">
+            <h1>Work Experience</h1>
+            <p>
+                A journey through the companies and projects that shaped my expertise in mobile development
+            </p>
+        </div>
+
+        <div class="experience-grid">
+            <div class="experience-card" onclick="openExpModal('exp1')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://siryah.tech/assets/images/sait-logo-v2-c-white-on-transparency.svg"
+                            alt="Siryah"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">ST</span>
+                    </div>
+                    <div class="exp-badge current">Current</div>
+                </div>
+                <h3 class="exp-company">Siryah Technologies</h3>
+                <p class="exp-position">Senior Flutter Developer</p>
+                <p class="exp-date">Mar 2025 - Present</p>
+                <p class="exp-location">📍 Saudi Arabia</p>
+            </div>
+
+            <div class="experience-card" onclick="openExpModal('exp2')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://cdn.prod.website-files.com/66719398e2e710f8e0a5470f/6672f8d7ccb1edef8961511f_crunch-logo.svg"
+                            alt="Crunch"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">C</span>
+                    </div>
+                </div>
+                <h3 class="exp-company">Crunch LTD</h3>
+                <p class="exp-position">Senior Flutter Developer</p>
+                <p class="exp-date">Jan 2025 - Dec 2025</p>
+                <p class="exp-location">📍 Dubai, UAE</p>
+            </div>
+
+            <div class="experience-card" onclick="openExpModal('exp3')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://tayseerme.com/assets/Logo.12793e3b.svg" alt="Tayseer"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">TF</span>
+                    </div>
+                </div>
+                <h3 class="exp-company">Tayseer Finance</h3>
+                <p class="exp-position">Senior Flutter Developer</p>
+                <p class="exp-date">Aug 2024 - Mar 2025</p>
+                <p class="exp-location">📍 Saudi Arabia</p>
+            </div>
+
+            <div class="experience-card" onclick="openExpModal('exp4')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://codelink.com.sa//assets/images/logo2.svg" alt="Codelink"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">CL</span>
+                    </div>
+                </div>
+                <h3 class="exp-company">Codelink</h3>
+                <p class="exp-position">Mid-Senior Flutter Developer</p>
+                <p class="exp-date">Jun 2023 - Aug 2024</p>
+                <p class="exp-location">📍 Riyadh, Saudi Arabia</p>
+            </div>
+
+            <div class="experience-card" onclick="openExpModal('exp5')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://www.plementus.com/favicon.ico" alt="Plementus"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">P</span>
+                    </div>
+                </div>
+                <h3 class="exp-company">Plementus</h3>
+                <p class="exp-position">Flutter Developer</p>
+                <p class="exp-date">Feb 2023 - Jun 2023</p>
+                <p class="exp-location">📍 Cairo, Egypt</p>
+            </div>
+
+            <div class="experience-card" onclick="openExpModal('exp6')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://invasso.com/wp-content/uploads/2020/04/Invasso-New-Logo.webp" alt="Invasso"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">I</span>
+                    </div>
+                </div>
+                <h3 class="exp-company">Invasso</h3>
+                <p class="exp-position">Junior Flutter Developer</p>
+                <p class="exp-date">Jul 2021 - Feb 2023</p>
+                <p class="exp-location">📍 New Jersey, USA</p>
+            </div>
+
+            <div class="experience-card" onclick="openExpModal('exp7')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://skysoft-eg.net/wp-content/uploads/2025/10/sky-soft-100x100-copy.png"
+                            alt="Skysoft"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">S</span>
+                    </div>
+                    <div class="exp-badge current">Ongoing</div>
+                </div>
+                <h3 class="exp-company">Skysoft</h3>
+                <p class="exp-position">Flutter Developer (Support)</p>
+                <p class="exp-date">Oct 2021 - Present</p>
+                <p class="exp-location">📍 Egypt</p>
+            </div>
+
+            <div class="experience-card featured" onclick="openExpModal('exp8')">
+                <div class="exp-card-header">
+                    <div class="exp-logo">
+                        <img src="https://soldout.sa/favicon.ico" alt="SOLDOUT"
+                            onerror="this.style.display='none'; this.parentElement.querySelector('.exp-logo-fallback').style.display='flex';">
+                        <span class="exp-logo-fallback">SO</span>
+                    </div>
+                    <div class="exp-badge featured">Featured</div>
+                </div>
+                <h3 class="exp-company">SOLDOUT</h3>
+                <p class="exp-position">Lead Software Engineer</p>
+                <p class="exp-date">Aug 2024 - Dec 2025</p>
+                <p class="exp-location">📍 Saudi Arabia</p>
+            </div>
+        </div>
+
+        <!-- Experience Modal -->
+        <div class="modal" id="exp-modal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeExpModal()">&times;</button>
+                <div id="exp-modal-body">
+                    <!-- Experience modal content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+
         <!-- Services Section -->
         <div class="hero" id="services">
             <h1>Services I Provide</h1>
@@ -712,7 +862,7 @@
             });
 
             // Only update if current section is one of our nav sections
-            const validSections = ['about', 'services', 'apps', 'coming-soon', 'contact'];
+            const validSections = ['about', 'experience', 'services', 'apps', 'coming-soon', 'contact'];
             if (validSections.includes(current)) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
@@ -1112,6 +1262,207 @@
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape") {
                 closeModal();
+                closeExpModal();
+            }
+        });
+
+        // Experience Data
+        const expData = {
+            exp1: {
+                logo: "https://siryah.tech/Images/Logo.png",
+                fallback: "ST",
+                company: "Siryah Alarab Information Technologies",
+                position: "Senior Flutter Developer (Part-Time)",
+                date: "Mar 2025 - Present",
+                location: "Dammam, Saudi Arabia",
+                url: "https://siryah.tech",
+                description: "Leading the development of enterprise finance applications with a focus on clean architecture and scalable solutions.",
+                achievements: [
+                    "Leading the full development of the NFH finance application, a fully contracted project built from scratch",
+                    "Designed and implemented the app using Clean Architecture, BLoC, and a modularized codebase",
+                    "Built all core modules including authentication, loan request workflows, file uploads, notifications, biometric authentication, and full localization",
+                    "Collaborated closely with testers and project managers to clarify requirements and ensure smooth sprint execution",
+                    "Contributed to pushing the project to near completion, coordinating development progress across backend, QA, and mobile"
+                ],
+                tech: ["Flutter", "Dart", "BLoC", "Clean Architecture", "Firebase", "Biometric Auth"]
+            },
+            exp2: {
+                logo: "https://www.getcrunch.app/favicon.ico",
+                fallback: "C",
+                company: "Crunch LTD",
+                position: "Senior Flutter Developer",
+                date: "Jan 2025 - Dec 2025",
+                location: "Dubai, UAE",
+                url: "https://www.getcrunch.app",
+                description: "Enhancing a leading personal finance app with advanced features and improved architecture.",
+                achievements: [
+                    "Improved the existing Crunch app by fixing major performance issues, enhancing UI/UX, and integrating new APIs",
+                    "Added new features and implemented a cleaner navigation flow using GoRouter",
+                    "Introduced Easy Localization and rebuilt key animations for smoother interactions",
+                    "Developed a Data Management System (DMS) to streamline data handling",
+                    "Implemented Lean Syncing using Lean SDK with SSE to improve real-time updates",
+                    "Contributed to Crunch 2.0.0, rebuilding large parts of the UI and cleaning the overall architecture using BLoC"
+                ],
+                tech: ["Flutter", "BLoC", "GoRouter", "SSE", "Lean SDK", "Firebase"]
+            },
+            exp3: {
+                logo: "https://tayseerme.com/favicon.ico",
+                fallback: "TF",
+                company: "Tayseer Finance",
+                position: "Senior Flutter Developer (Part-Time)",
+                date: "Aug 2024 - Mar 2025",
+                location: "Dhahran, Saudi Arabia",
+                url: "https://tayseerme.com",
+                description: "Revamping a major finance application with modern architecture and improved performance.",
+                achievements: [
+                    "Led the development of a fully revamped new version of the Tayseer Finance mobile app",
+                    "Rebuilt using MVC architecture with GetX for state management",
+                    "Enhanced the existing production app by fixing critical bugs and improving stability",
+                    "Improved the New Loan System and assisted in API issue resolution",
+                    "Improved startup time and overall performance for a smoother user experience",
+                    "Supported the release process and helped bring the new version to near completion"
+                ],
+                tech: ["Flutter", "GetX", "MVC", "HyperPay", "Apple Pay", "Shorebird", "Codemagic CI/CD"]
+            },
+            exp4: {
+                logo: "https://codelink.com.sa/favicon.ico",
+                fallback: "CL",
+                company: "Codelink",
+                position: "Mid-Senior Flutter Developer",
+                date: "Jun 2023 - Aug 2024",
+                location: "Riyadh, Saudi Arabia",
+                url: "https://codelink.com.sa",
+                description: "Building multiple production applications from scratch with diverse feature sets.",
+                achievements: [
+                    "Built Diet Watchers and Tawzea from scratch with social auth, location tracking, responsive UI/UX",
+                    "Implemented full API integrations, real-time chat using Pusher, and payment support via Moyasar and Tabby",
+                    "Improved UI responsiveness and overall performance across projects",
+                    "Collaborated in the development of Noah, Smart Minds, Meer, and Hayatona Clinics",
+                    "Used BLoC, Riverpod, and GetX for state management based on project requirements"
+                ],
+                tech: ["Flutter", "BLoC", "Riverpod", "GetX", "Pusher", "Moyasar", "Tabby", "Agora"]
+            },
+            exp5: {
+                logo: "https://www.plementus.com/favicon.ico",
+                fallback: "P",
+                company: "Plementus",
+                position: "Flutter Developer",
+                date: "Feb 2023 - Jun 2023",
+                location: "Cairo, Egypt",
+                url: "https://www.plementus.com",
+                description: "Sole Flutter developer building multiple enterprise applications under tight deadlines.",
+                achievements: [
+                    "Served as the sole full-time Flutter developer, building multiple apps from scratch",
+                    "Developed MRC, Red Bull Driver's App, and Tamadon with key features",
+                    "Implemented authentication, API integrations, file uploads, location services, and notifications",
+                    "Developed a fully integrated Odoo mobile client enabling seamless interaction with Odoo APIs",
+                    "Delivered stable builds under tight timelines, consistently addressing issues and improving functionality"
+                ],
+                tech: ["Flutter", "Dart", "Odoo", "Firebase", "REST APIs", "SQLite"]
+            },
+            exp6: {
+                logo: "https://invasso.com/favicon.ico",
+                fallback: "I",
+                company: "Invasso",
+                position: "Junior Flutter Developer",
+                date: "Jul 2021 - Feb 2023",
+                location: "New Jersey, USA",
+                url: "https://invasso.com",
+                description: "Developing production mobile applications with focus on UI/UX and performance.",
+                achievements: [
+                    "Developed multiple production apps including JTL Express, MXI App Suite, and ML Bagels",
+                    "Implemented UI improvements and performance enhancements across projects",
+                    "Enhanced UI and user engagement by resolving interface issues",
+                    "Fixed performance glitches and optimized app responsiveness"
+                ],
+                tech: ["Flutter", "Dart", "Firebase", "Stripe", "Google Maps", "REST APIs"]
+            },
+            exp7: {
+                logo: "https://skysoft-eg.net/favicon.ico",
+                fallback: "S",
+                company: "Skysoft",
+                position: "Flutter Developer (App Support)",
+                date: "Oct 2021 - Present",
+                location: "Mahala, Egypt",
+                url: "https://skysoft-eg.net",
+                description: "Providing ongoing maintenance and support for enterprise business applications.",
+                achievements: [
+                    "Maintaining an enterprise suite: Smart Sales, Smart Market, Smart Prices",
+                    "Providing ongoing updates and stability improvements",
+                    "Ensuring consistent app performance and reliability for business users"
+                ],
+                tech: ["Flutter", ".NET", "SQL Server", "Firebase"]
+            },
+            exp8: {
+                logo: "https://soldout.sa/favicon.ico",
+                fallback: "SO",
+                company: "SOLDOUT",
+                position: "Lead Software Engineer",
+                date: "Aug 2024 - Dec 2025",
+                location: "Saudi Arabia",
+                url: "https://soldout.sa",
+                description: "Formed and led a technical team to revamp and scale an existing bidding application, achieving remarkable business growth.",
+                achievements: [
+                    "Formed and led a technical team to revamp and scale an existing bidding application",
+                    "Built end-to-end technical solutions across mobile and backend, contributing to a revenue increase of up to 60%",
+                    "Built a clean, scalable codebase ready for future expansion",
+                    "Enabled the app to generate over 1 million SAR in under two years"
+                ],
+                tech: ["Flutter", "Dart", "Backend Development", "Team Leadership", "Architecture Design"]
+            }
+        };
+
+        function openExpModal(expId) {
+            const exp = expData[expId];
+            const modal = document.getElementById("exp-modal");
+            const modalBody = document.getElementById("exp-modal-body");
+
+            modalBody.innerHTML = `
+                <div class="exp-modal-header">
+                    <div class="exp-modal-logo">
+                        <img src="${exp.logo}" alt="${exp.company}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span class="exp-logo-fallback-modal">${exp.fallback}</span>
+                    </div>
+                    <div class="exp-modal-info">
+                        <h2 class="modal-title">${exp.company}</h2>
+                        <p class="exp-modal-position">${exp.position}</p>
+                        <p class="exp-modal-meta">📅 ${exp.date} &nbsp;|&nbsp; 📍 ${exp.location}</p>
+                    </div>
+                </div>
+                <p class="modal-description">${exp.description}</p>
+                <div class="exp-achievements">
+                    <h3>Key Achievements</h3>
+                    <ul>
+                        ${exp.achievements.map(a => `<li>${a}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-tags">
+                        ${exp.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="store-links">
+                    <a href="${exp.url}" class="store-link" target="_blank">
+                        🌐 Visit Company Website
+                    </a>
+                </div>
+            `;
+
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeExpModal() {
+            const modal = document.getElementById("exp-modal");
+            modal.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        // Close experience modal when clicking outside
+        document.getElementById("exp-modal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                closeExpModal();
             }
         });
     </script>
